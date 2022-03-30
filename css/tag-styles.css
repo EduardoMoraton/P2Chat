@@ -25,17 +25,47 @@
 
 .msg {
     min-height: 4rem;
+    display:  flex;
 }
 
-right {
-    display: flex;
+.right {
+    flex-direction: row-reverse;
+}
+
+.left {
+    flex-direction: row;
 }
 
 .msg-box {
     max-width: 60rem;
+    flex-grow: 1;
     background-color: rgb(7, 121, 121);
+    display: flex;
+}
+
+.content {
+    max-width: 55rem;
+    flex-grow: 1;
+    background-color: white;
+    margin: .3rem;
+    word-wrap: break-word;
 }
 
 .msg-writer {
     flex-grow: 1;
+    display: flex;
+}
+
+.input-text {
+    flex-grow: 11;
+}
+
+.send-btn {
+    flex-grow: 1;
+    background-color: blue;
+}
+
+.input-text input {
+    width: 90%;
+    margin: 0 auto;
 }
