@@ -18,14 +18,16 @@
 
 .conversation {
     background-color: antiquewhite;
-    flex-grow: 10;
+    height: 75vh;
     display: flex;
     flex-direction: column-reverse;
+    overflow: scroll;
 }
 
 .msg {
     min-height: 4rem;
-    display:  flex;
+    display: flex;
+    overflow: scroll;
 }
 
 .right {
@@ -52,7 +54,7 @@
 }
 
 .msg-writer {
-    flex-grow: 1;
+    min-height: 4rem;
     display: flex;
 }
 

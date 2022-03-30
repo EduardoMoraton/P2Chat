@@ -1,5 +1,4 @@
-'use strict'
-
+'use strict';
 class msg {
     constructor(pos, cont, time){
         this.pos = pos
@@ -27,10 +26,28 @@ class msg {
     }
 }
 
-const inputTextBox = document.querySelector(".input-text input");
-const sendMsg = document.querySelector(".send-btn").addEventListener("click", ()=>{
-    console.log("clocl")
-    let conversation = document.querySelector(".conversation")
-    conversation.appendChild(new msg("left", "hola marcos", 2).node())
+const peer = new Peer(prompt())
+
+let connectPeer = (peer, id) => {
+    let conn = peer.connect(id);
+    conn.on('open', ()=>{
+        console.log("connected")
+    })
+}
+
+peer.on('connection', ()=>console.log("Connected"))
+
+const contact = document.querySelector(".contact1").addEventListener("click", ()=>{
+    connectPeer(peer, prompt())
 })
+
+const sendMsg = document.querySelector(".send-btn").addEventListener("click", ()=>{
+    let conversation = document.querySelector(".conversation")
+    conversation.prepend(new msg("right", document.querySelector(".input-text input").value, 2).node())
+    let id = document.querySelector(".tmp-id").value
+
+})
+
+
+
 
