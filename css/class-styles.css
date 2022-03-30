@@ -1,0 +1,33 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: rebeccapurple;
+}
+header {
+    background-color: yellow;
+}
+article {
+    flex-grow: 4;
+    background-color: aqua;
+    display: flex;
+}
+section {
+    margin: 1rem;
+    flex-grow: 1;
+    background-color: brown;
+}
+footer {
+    background-color: blue;
+}

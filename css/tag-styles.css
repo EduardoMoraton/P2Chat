@@ -1,0 +1,41 @@
+.people {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.contact {
+    max-height: 4rem;
+    border-radius: 1rem;
+    background-color: red;
+    flex-grow: 1;
+}
+
+.msg-table {
+    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation {
+    background-color: antiquewhite;
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.msg {
+    min-height: 4rem;
+}
+
+right {
+    display: flex;
+}
+
+.msg-box {
+    max-width: 60rem;
+    background-color: rgb(7, 121, 121);
+}
+
+.msg-writer {
+    flex-grow: 1;
+}
