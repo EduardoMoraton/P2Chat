@@ -25,26 +25,34 @@ class msg {
         return base
     }
 }
+const Peer = require('simple-peer')
 
-const peer = new Peer(prompt())
+var peer1 = new Peer({ initiator: true })
+var peer2 = new Peer()
 
-let connectPeer = (peer, id) => {
-    let conn = peer.connect(id);
-    conn.on('open', ()=>{
-        console.log("connected")
-    })
-}
+peer1.on('signal', data => {
+  // when peer1 has signaling data, give it to peer2 somehow
+  peer2.signal(data)
+})
 
-peer.on('connection', ()=>console.log("Connected"))
+peer2.on('signal', data => {
+  // when peer2 has signaling data, give it to peer1 somehow
+  peer1.signal(data)
+})
 
-const contact = document.querySelector(".contact1").addEventListener("click", ()=>{
-    connectPeer(peer, prompt())
+peer1.on('connect', () => {
+  // wait for 'connect' event before using the data channel
+  peer1.send('hey peer2, how is it going?')
+})
+
+peer2.on('data', data => {
+  // got a data channel message
+  console.log('got a message from peer1: ' + data)
 })
 
 const sendMsg = document.querySelector(".send-btn").addEventListener("click", ()=>{
     let conversation = document.querySelector(".conversation")
     conversation.prepend(new msg("right", document.querySelector(".input-text input").value, 2).node())
-    let id = document.querySelector(".tmp-id").value
 
 })
 
