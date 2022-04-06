@@ -1,12 +1,20 @@
+:root {
+    --primary: #8c9eff;
+    --p-dark: #5870cb; 
+    --p-light: #c0cfff;
+  }
+
+
 .people {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    border-radius: 34px;
 }
 .contact {
     max-height: 4rem;
     border-radius: 1rem;
-    background-color: red;
+    background-color: var(--p-light);
     flex-grow: 1;
 }
 
@@ -17,11 +25,12 @@
 }
 
 .conversation {
-    background-color: antiquewhite;
+    background-color: var(--p-light);
     height: 75vh;
     display: flex;
     flex-direction: column-reverse;
     overflow: scroll;
+    border-radius: 34px;
 }
 
 .msg {
@@ -39,10 +48,11 @@
 }
 
 .msg-box {
-    max-width: 60rem;
+    max-width: 40rem;
     flex-grow: 1;
-    background-color: rgb(7, 121, 121);
+    background-color: var(--p-dark);
     display: flex;
+    border-radius: 34px;
 }
 
 .content {
@@ -51,23 +61,32 @@
     background-color: white;
     margin: .3rem;
     word-wrap: break-word;
+    border-radius: 34px;
 }
 
 .msg-writer {
     min-height: 4rem;
     display: flex;
+    border-radius: 34px;
+    border-radius: 34px;
 }
 
 .input-text {
     flex-grow: 11;
+    border-radius: 34px;
 }
 
 .send-btn {
     flex-grow: 1;
-    background-color: blue;
+    background-color: var(--p-dark);
+    border-radius: 34px;
 }
 
 .input-text input {
     width: 90%;
     margin: 0 auto;
+}
+
+.status {
+    color: red;
 }

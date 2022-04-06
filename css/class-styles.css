@@ -16,17 +16,17 @@ main {
     background-color: rebeccapurple;
 }
 header {
-    background-color: yellow;
+    background-color: var(--p-dark);
 }
 article {
     flex-grow: 4;
-    background-color: aqua;
+    background-color: white;
     display: flex;
 }
 section {
     margin: 1rem;
     flex-grow: 1;
-    background-color: brown;
+    background-color: var(--primary);
 }
 footer {
     background-color: blue;

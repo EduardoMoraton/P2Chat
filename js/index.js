@@ -1,4 +1,4 @@
-'use strict';
+
 class msg {
     constructor(pos, cont, time){
         this.pos = pos
@@ -25,35 +25,45 @@ class msg {
         return base
     }
 }
-const Peer = require('simple-peer')
+let conversation = document.querySelector(".conversation")
+let myid = document.querySelector(".my-id")
+let send = document.querySelector(".send-btn")
+let call = document.querySelector(".call")
+let status = document.querySelector(".status")
 
-var peer1 = new Peer({ initiator: true })
-var peer2 = new Peer()
 
-peer1.on('signal', data => {
-  // when peer1 has signaling data, give it to peer2 somehow
-  peer2.signal(data)
+var peer = new Peer(prompt(),{debug: 3,
+  host: '0.peerjs.com',
+  port: 443})
+var conn;
+
+call.addEventListener("click", ()=>{
+  status.textContent = "Connecting"
+  conn = peer.connect(document.querySelector(".id-out").value)
+  conn.on("open", ()=>{
+    status.textContent = "CONECTED"
+  })
+  conn.on("data", (data)=>{
+    console.log(data)
+    conversation.prepend(new msg("left", data, "hola").node())
+  })
 })
 
-peer2.on('signal', data => {
-  // when peer2 has signaling data, give it to peer1 somehow
-  peer1.signal(data)
+send.addEventListener("click", ()=>{
+  let data = document.querySelector(".input-msg").value
+  conn.send(data)
+  conversation.prepend(new msg("right", data, "a").node())
 })
 
-peer1.on('connect', () => {
-  // wait for 'connect' event before using the data channel
-  peer1.send('hey peer2, how is it going?')
-})
+peer.on("open", (id)=>myid.textContent=id)
 
-peer2.on('data', data => {
-  // got a data channel message
-  console.log('got a message from peer1: ' + data)
-})
-
-const sendMsg = document.querySelector(".send-btn").addEventListener("click", ()=>{
-    let conversation = document.querySelector(".conversation")
-    conversation.prepend(new msg("right", document.querySelector(".input-text input").value, 2).node())
-
+peer.on("connection", (con)=>{
+  status.textContent = "CONECTED"
+  conn = con
+  con.on("data", (data)=>{
+    console.log(data)
+    conversation.prepend(new msg("left", data, "hola").node())
+  })
 })
 
 
