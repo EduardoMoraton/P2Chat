@@ -23,6 +23,7 @@ article {
     background-color: white;
     display: flex;
     flex-direction: column;
+    
 }
 section {
     margin: 1rem;
